@@ -8,6 +8,12 @@ public class Schedule {
     public Schedule() {
     }
 
+    public Schedule(long movie_id, String time, int hall) {
+        this.movie_id = movie_id;
+        this.time = time;
+        this.hall = hall;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "schedule_id")
@@ -18,6 +24,9 @@ public class Schedule {
 
     @Column(name = "time")
     private String time;
+
+    @Column(name = "hall")
+    private int hall;
 
     public long getId() {
         return id;
@@ -41,5 +50,13 @@ public class Schedule {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public int getHall() {
+        return hall;
+    }
+
+    public void setHall(int hall) {
+        this.hall = hall;
     }
 }

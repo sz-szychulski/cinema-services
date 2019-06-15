@@ -11,11 +11,22 @@
 <head>
     <title>Cinema app</title>
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${contextPath}/resources/css/index.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/style.css" rel="stylesheet">
 
 </head>
-<body>
-    <p align="right" style="padding: 10px 10px 0px 0px;">Witaj ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Wyloguj</a></p>
+    <div class="menu">
+        <div class="left">
+            <ul>
+                <li><a href="/">Strona główna</a></li>
+                <li><a href="/movies_control">Panel filmów</a></li>
+                <li><a href="/schedule_control">Panel godzin</a></li>
+            </ul>
+        </div>
+        <div class="right">
+            <p align="right">Witaj ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Wyloguj</a></p>
+        </div>
+    </div>
+
     <hr />
     <div class="container">
     <c:if test="${pageContext.request.userPrincipal.name != null}">
@@ -27,13 +38,14 @@
                 <c:forEach items="${movieList}" var="movie">
                     <div class="flex-container">
                         <div class="left">
-                            <img src="<c:out value="${movie.poster}" />" class="center" />
+                            <img src="<c:out value="${movie.poster}" />" alt="no_poster" class="center" />
                         </div>
                         <div class="right">
                             <h2>Tytuł: <c:out value="${movie.title}" /></h2>
                             <h3>Reżyser: <c:out value="${movie.director}" /></h3>
                             <h3>Typ: <c:out value="${movie.type}" /></h3>
                             <h3>Czas trwania: <c:out value="${movie.time}" /> minut</h3>
+                            <a href="/reservation/${movie.id}"><button>Zarezerwuj</button></a>
                         </div>
                     </div>
                     <hr />

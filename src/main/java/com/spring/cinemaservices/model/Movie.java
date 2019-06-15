@@ -8,6 +8,14 @@ public class Movie {
     public Movie() {
     }
 
+    public Movie(String title, int time, String poster, String type, String director) {
+        this.title = title;
+        this.time = time;
+        this.poster = poster;
+        this.type = type;
+        this.director = director;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "movie_id")

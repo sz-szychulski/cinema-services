@@ -26,4 +26,9 @@ public class MovieServiceImpl implements MovieService {
     public List<Movie> getAllMovies() {
         return movieRepository.findAll();
     }
+
+    @Override
+    public void deleteMovie(Movie movie) {
+        movieRepository.delete(movie);
+    }
 }
